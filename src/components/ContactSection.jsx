@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New Quote Request from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    window.location.href = `mailto:gm.anglo@yahoo.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
@@ -12,22 +35,22 @@ const ContactSection = () => {
             <h2 className="section-title contact-title">Request a Quote</h2>
             <p className="contact-desc">Fill out the form below and our team will get back to you within 24 hours.</p>
             
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" placeholder="Your Name" required />
+                <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Your Email" required />
+                <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <input type="tel" placeholder="Your Phone" required />
+                <input type="tel" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <textarea name="message" placeholder="Your Message" rows="5" value={formData.message} onChange={handleChange} required></textarea>
               </div>
               <button type="submit" className="btn btn-primary btn-block">
                 Send Request
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="22" y1="2" x2="11" y2="13"/>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                 </svg>

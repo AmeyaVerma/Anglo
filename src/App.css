@@ -145,17 +145,27 @@ ul {
   transform: translateX(-50%) translateY(0);
 }
 
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+}
+
 .dropdown-menu a {
   display: block;
   padding: 10px 20px;
   font-size: 0.9rem;
   color: var(--nav-text);
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), padding-left var(--transition);
 }
 
 .dropdown-menu a:hover {
   background: #f0f4ff;
   color: var(--primary);
+  padding-left: 26px;
 }
 
 /* CTA Button in Nav */
