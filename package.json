@@ -1,0 +1,20 @@
+{
+  "name": "anglo-shipping",
+  "version": "1.0.0",
+  "description": "Anglo Shipping - Premium Enterprise Logistics Solutions",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "express": "^4.18.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.1",
+    "vite": "^8.0.9"
+  }
+}
